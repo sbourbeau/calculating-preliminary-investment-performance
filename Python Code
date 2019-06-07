@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv(r'filename') 
+df = pd.read_csv(r'(file path)\Quick Base Export Test.csv') 
 
 #create a column with a calculated value
 df['Calced_Value'] = (df.Beginning_MV * (1 + df.Perf))
