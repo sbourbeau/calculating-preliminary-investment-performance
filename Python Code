@@ -1,0 +1,23 @@
+import pandas as pd
+
+df = pd.read_csv(r'W:\Staff\DOCUMENT MGT Team\Data Mapping\Performance Mapping\Quick Base Export Test.csv') 
+
+#create a column with a calculated value
+df['Calced_Value'] = (df.Beginning_MV * (1 + df.Perf))
+
+#create a new dataframe with calculated MV
+dfparisvalue = df.loc[:, ('Paris_Holding_ID' , 'Account_Type' , 'Field_Type' , 'Date' , 'Calced_Value')]
+dfparisvalue['Account_Type'] = 'mv'
+
+#create a new dataframe with calculated performance MV--PERFORMANCE IS IN % FORMAT
+dfparisperf = df.loc[:, ('Paris_Holding_ID' , 'Account_Type' , 'Field_Type' , 'Date' , 'Calced_Value')]
+dfparisperf['Calced_Value'] = df.loc[:,'Perf']*100
+dfparisperf['Account_Type'] = 'nror'
+
+#create a new dataframe that combines the calculated MV and performance dataframes
+dfcombinedparis = dfparisvalue.append(dfparisperf)
+
+#export combined dataframe to network drive for upload into Paris
+dfcombinedparis.to_csv(r'W:\Staff\DOCUMENT MGT Team\Data Mapping\Performance Mapping\Test Paris Import Perf 100.csv', index = False, header = False)
+
+dfcombinedparis
