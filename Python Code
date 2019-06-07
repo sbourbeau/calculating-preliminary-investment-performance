@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv(r'W:\Staff\DOCUMENT MGT Team\Data Mapping\Performance Mapping\Quick Base Export Test.csv') 
+df = pd.read_csv(r'filename') 
 
 #create a column with a calculated value
 df['Calced_Value'] = (df.Beginning_MV * (1 + df.Perf))
@@ -18,6 +18,6 @@ dfparisperf['Account_Type'] = 'nror'
 dfcombinedparis = dfparisvalue.append(dfparisperf)
 
 #export combined dataframe to network drive for upload into Paris
-dfcombinedparis.to_csv(r'W:\Staff\DOCUMENT MGT Team\Data Mapping\Performance Mapping\Test Paris Import Perf 100.csv', index = False, header = False)
+dfcombinedparis.to_csv(r'filename', index = False, header = False)
 
 dfcombinedparis
